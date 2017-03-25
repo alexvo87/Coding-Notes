@@ -19,3 +19,17 @@ SharedPreferences mySPrefs =PreferenceManager.getDefaultSharedPreferences(this);
 SharedPreferences.Editor editor = mySPrefs.edit();
 editor.remove(String key);
 editor.apply();
+
+
+Set<String> s = new HashSet<String>(sharedPrefs.getStringSet("key", new HashSet<String>()));
+
+
+SharedPreferences.Editor editor = sharedPrefs.edit();
+Set<String> oldSet = sharedPrefs.getStringSet("key", new HashSet<String>());
+
+//make a copy, update it and save it
+Set<String> newStrSet = new HashSet<String>();    
+newStrSet.add(new_element);
+newStrSet.addAll(oldSet);
+
+editor.putStringSet("key",newStrSet); edit.commit();
